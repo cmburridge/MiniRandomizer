@@ -7,25 +7,21 @@ using Random = UnityEngine.Random;
 public class RandomGen : MonoBehaviour {
 
 	public GameObject[] objects;
-	public bool spawned = false;
+	
 	
 	
 	public void Roll()
 	{
-		if (spawned == false)
-		{
-			int rand = Random.Range(0, objects.Length);
-			Instantiate(objects[rand], transform.position, Quaternion.identity);
-			spawned = true;
-		}
+		int rand = Random.Range(0, objects.Length);
+		Instantiate(objects[rand], transform.position, Quaternion.identity);
 	}
 
-	public void Clear()
+	public void Clear(string tag)
 	{
-		if (spawned == true)
+		GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(tag);
+		foreach (GameObject target in gameObjects)
 		{
-			Destroy(GameObject.FindGameObjectWithTag("Player"));
-			spawned = false;
+			GameObject.Destroy(target);
 		}
 	}
 

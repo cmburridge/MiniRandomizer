@@ -19,8 +19,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Destroy.cs" />
-        <option value="$PROJECT_DIR$/Assets/RandomGen.cs" />
         <option value="$PROJECT_DIR$/Assets/SpriteChange.cs" />
+        <option value="$PROJECT_DIR$/Assets/RandomGen.cs" />
       </list>
     </option>
   </component>
@@ -72,6 +72,7 @@
       <updated>1586893602804</updated>
       <workItem from="1586893605144" duration="55000" />
       <workItem from="1586893701876" duration="6265000" />
+      <workItem from="1587159630931" duration="1317000" />
     </task>
     <servers />
   </component>
