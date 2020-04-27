@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-
+	
 	public Transform player;
 	public float speed;
 	public float jumpHeight; 
@@ -20,9 +20,9 @@ public class Movement : MonoBehaviour
 		{
 			transform.Translate(player.TransformDirection(Vector3.left * speed));
 		}
-		if (Input.GetKeyDown(KeyCode.W))
+		if (Input.GetButtonDown("Jump"))
 		{
-			
+			transform.Translate(player.TransformDirection(Vector3.up * jumpHeight));
 		}
 	}
 }

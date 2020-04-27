@@ -25,10 +25,10 @@
         <option value="$PROJECT_DIR$/Assets/Destroy.cs" />
         <option value="$PROJECT_DIR$/Assets/SpriteChange.cs" />
         <option value="$PROJECT_DIR$/Assets/RandomGen.cs" />
-        <option value="$PROJECT_DIR$/Assets/Movement.cs" />
         <option value="$PROJECT_DIR$/Assets/Health.cs" />
         <option value="$PROJECT_DIR$/Assets/Shooting.cs" />
         <option value="$PROJECT_DIR$/Assets/Bullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Movement.cs" />
       </list>
     </option>
   </component>
@@ -83,6 +83,7 @@
       <workItem from="1587159630931" duration="2154000" />
       <workItem from="1587352209795" duration="3130000" />
       <workItem from="1587584850681" duration="2928000" />
+      <workItem from="1587962532850" duration="596000" />
     </task>
     <servers />
   </component>
