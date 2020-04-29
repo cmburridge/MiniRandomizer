@@ -5,24 +5,67 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-	
-	public Transform player;
 	public float speed;
-	public float jumpHeight; 
+	public float jumpForce;
+	private float moveInput;
+
+	private Rigidbody2D rb;
+
+	private bool isGrounded;
+	public Transform groundCheck;
+	public float checkRadius;
+	public LayerMask whatIsGround;
+
+	private int extraJumps;
+	public int extraJumpValue;
 	
-	void Update () {
+	private bool facingRight = true;
+	
+	private void Start()
+	{
+		extraJumps = extraJumpValue;
+		rb = GetComponent<Rigidbody2D>();
+	}
+
+	private void FixedUpdate()
+	{
+		isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 		
-		if (Input.GetKey(KeyCode.D))
+		moveInput = Input.GetAxisRaw("Horizontal");
+		rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+
+		if (facingRight == false && moveInput > 0)
 		{
-			transform.Translate(player.TransformDirection(Vector3.right * speed));
+			Flip();
 		}
-		if (Input.GetKey(KeyCode.A))
+		else if (facingRight == true && moveInput < 0)
 		{
-			transform.Translate(player.TransformDirection(Vector3.left * speed));
+			Flip();
 		}
-		if (Input.GetButtonDown("Jump"))
+	}
+
+	private void Update()
+	{
+		if (isGrounded == true)
 		{
-			transform.Translate(player.TransformDirection(Vector3.up * jumpHeight));
+			extraJumps = extraJumpValue;
 		}
+		
+		if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
+		{
+			rb.velocity = Vector2.up * jumpForce;
+			extraJumps--;
+		}else if (Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded == true)
+		{
+			rb.velocity = Vector2.up * jumpForce;
+		}
+	}
+
+	void Flip()
+	{
+		facingRight = !facingRight;
+		Vector3 Scaler = transform.localScale;
+		Scaler.x *= -1;
+		transform.localScale = Scaler;
 	}
 }
