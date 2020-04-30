@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 	public float speed;
 	public float jumpForce;
 	private float moveInput;
+	public float floatPower;
 
 	private Rigidbody2D rb;
 
@@ -42,6 +43,14 @@ public class Movement : MonoBehaviour
 		{
 			Flip();
 		}
+	
+		if (Input.GetKey(KeyCode.W) && isGrounded == false) 
+		{
+    			rb.gravityScale = floatPower;
+		}
+		else
+    			rb.gravityScale = 2;
+	
 	}
 
 	private void Update()
@@ -50,7 +59,9 @@ public class Movement : MonoBehaviour
 		{
 			extraJumps = extraJumpValue;
 		}
+
 		
+
 		if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
 		{
 			rb.velocity = Vector2.up * jumpForce;
