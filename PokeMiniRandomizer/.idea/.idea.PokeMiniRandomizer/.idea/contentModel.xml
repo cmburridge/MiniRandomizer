@@ -8,6 +8,7 @@
       <e p="Assets" t="Include">
         <e p="Bullet.cs" t="Include" />
         <e p="Health.cs" t="Include" />
+        <e p="IsMoving.cs" t="Include" />
         <e p="Movement.cs" t="Include" />
         <e p="RandomGen.cs" t="Include" />
         <e p="Shooting.cs" t="Include" />

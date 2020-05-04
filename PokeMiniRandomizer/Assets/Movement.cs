@@ -19,6 +19,8 @@ public class Movement : MonoBehaviour
 
 	private int extraJumps;
 	public int extraJumpValue;
+
+	public Animator animator;
 	
 	private bool facingRight = true;
 	
@@ -30,6 +32,8 @@ public class Movement : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		animator.SetFloat("Speed", Mathf.Abs(moveInput));
+		
 		isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
 		
 		moveInput = Input.GetAxisRaw("Horizontal");
@@ -50,7 +54,7 @@ public class Movement : MonoBehaviour
 		}
 		else
     			rb.gravityScale = 2;
-	
+
 	}
 
 	private void Update()
@@ -58,14 +62,15 @@ public class Movement : MonoBehaviour
 		if (isGrounded == true)
 		{
 			extraJumps = extraJumpValue;
+			animator.SetBool("IsJumping", false);
 		}
 
 		
-
 		if (Input.GetKeyDown(KeyCode.W) && extraJumps > 0)
 		{
 			rb.velocity = Vector2.up * jumpForce;
 			extraJumps--;
+			animator.SetBool("IsJumping", true);
 		}else if (Input.GetKeyDown(KeyCode.W) && extraJumps == 0 && isGrounded == true)
 		{
 			rb.velocity = Vector2.up * jumpForce;
